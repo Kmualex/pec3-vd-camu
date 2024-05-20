@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>PEC 3 - Visualización de Datos - Cuauhtemoc Medina</title>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<style>
+    body{
+        color: #525252;
+    }
+    .titulo{
+        background-color: #11114E;
+        color: white;
+    }
+    .textlbl {       
+        font-size: 0.7rem;
+        font-weight: bold;
+        visibility: hidden;
+    }
+    table {
+        border-collapse: collapse;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="col s12">
+            <br>
+            <span class="blue-text text-darken-2">M2.859</span>.
+            <span class="blue-text text-darken-2">Visualización de datos</span>.
+            <span class="blue-text text-darken-2">Aula 2</span><br>
+            <hr>
+            <h5><b>PEC 3 - Creación de una visualiación interactiva</b></h5>
+            <hr>
+            <span>Docentes: <b>Julià Minguillón Alfonso y Ramon Caihuelas Quiles</b> </span><br>
+            <span>Alumno: <b>Cuauhtemoc Alejandro Medina Uicab</b> </span><br>
+            <span>20 de mayo de 2024</span>
+            <br><br><br>
+
+
+            <h5 class="titulo">1.- Título y descripción:</h5>
+            <h4>¿México está listo para los retos del presente milenio? </h4>
+            <h5>Inversiones Educativas: Forjando el Futuro de México a través de la Creación de Instituciones
+                Educativas Significativas</h5>
+            <p>Desde la época prehispánica, los centros educativos en México han sido una parte integral de su
+                historia,
+                como los Calmécac, establecidos por los Aztecas. Durante la época colonial, la Real y Pontificia
+                Universidad de México, fundada en 1553 por decreto del Virrey Luis de Velasco, marcó otro hito
+                importante. En tiempos más recientes, el Instituto Politécnico Nacional, establecido en 1936, ha
+                contribuido significativamente al panorama educativo del país.</p>
+            <p>Esta visualización busca trazar la evolución histórica de las instituciones educativas en México,
+                tanto
+                públicas como privadas, desde el año 2010 hasta el 2023. Se enfoca en mostrar no solo el número de
+                instituciones creadas en ese lapso, sino también su distribución geográfica a lo largo del tiempo lo
+                cuál, a mi parecer, le aporta su máximo valor. </p>
+            <p>El poder de esta visualización radica en su capacidad para invitar al observador a reflexionar sobre
+                los
+                diversos factores que han influido en la creación de instituciones educativas en México. Estos
+                factores
+                pueden abarcar desde efectos económicos y cambios políticos hasta el impacto de la pandemia, entre
+                otros
+                aspectos relevantes. Al explorar la evolución de estas instituciones a lo largo del tiempo, se
+                ofrece
+                una perspectiva más completa de cómo el contexto social, económico y político ha moldeado el paisaje
+                educativo del país.</p>
+            <p>En consonancia con el título, la preparación de un país para enfrentar los desafíos del futuro se ve
+                reflejada en las inversiones que realiza en educación, incluida la fundación de instituciones
+                educativas
+                relevantes a lo largo del tiempo.</p>
+                <br><br><br>
+            
+            
+            <h5 class="titulo">2.- Origen y licencia de los datos:</h5>
+            <p>Fuentes: </p>
+            <p>Banco de datos DENUE del Instituto Nacional de Estadística, Geografía e Informática (INEGI)</p>
+            <p>Filtro: DENUE/Actividad económica/Servicios educativos/11/2023</p>
+            <p><a href="https://www.inegi.org.mx/app/descarga/default.html"
+                    target="_blank">https://www.inegi.org.mx/app/descarga/default.html</a> </p>
+            <p>Licencia: El uso de la información del INEGI es pública y puede revisarse la licencia de uso así como los
+                términos y condiciones en:</p>
+            <p><a href="https://www.inegi.org.mx/inegi/terminos.html"
+                    target="_blank">https://www.inegi.org.mx/inegi/terminos.html</a></p>
+            <p>Para la delimitación de los estados de la república mexicana los datos se recuperaron de un repositorio
+                de Github: </p>
+            <p><a href="https://github.com/PhantomInsights/mexico-geojson/tree/main/2022"
+                    target="_blank">https://github.com/PhantomInsights/mexico-geojson/tree/main/2022</a></p>
+            <p>La licencia para la información geográfica es MIT (free of charge to any person)</p>
+            </p>
+            <img src="datos.png" alt="" width="1200px;">
+            <br><br><br>
+            
+            
+            <h5  class="titulo">3.- Herramienta con la cual se ha hecho. Características de esta
+                herramienta.</h5>
+            <p>Toda la visualización se ha realizado con HTML, CSS, Javascript y las librerías: D3.JS y topojson.js </p>
+            <p>D3.js es una librería JavaScript open-source, libre para la visualiación de datos. Es una aproximación de
+                bajo nivel para la autoría dinámica de gráficos basados en datos</p>
+            <p><a href="d3js.org" target="_blank">d3js.org</a></p>
+            <p>TopoJSON es una extensión de GeoJSON que codifica información topológica (ayuda a eliminar las
+                redundancias geométricas)</p>
+            <p><a href="https://github.com/topojson/topojson" target="_blank">https://github.com/topojson/topojson</a>
+            </p>
+            <br><br><br>
+            
+            
+        
+            <h5  class="titulo">4.- Presentación de la navegación / animación de la visualización
+                creada.</h5>
+        </div>
+        <div>
+            <h4>¿México está listo para los retos del presente milenio?</h4>
+            <h5>Inversiones Educativas: Forjando el Futuro de México a través de la Creación de Instituciones
+                Educativas Significativas</h5>
+            <h5>100+ ocupantes</h5>
+        </div>
+        <div>
+            <svg id="svg_todas" width="960" height="500" />
+        </div>
+   
+        <div class="container">
+            <div class="col s6"><h5>Año: <span id="anio">2010</span></h5><input id="rango" type="range" min="2010" max="2023" value="2010"></div>
+            <div class="col s6"><p id="miitem"></p></div>
+            <table class="browser-default">
+                <tr>
+                    <td><img src="7_azul.png" alt="">Privadas (251 o mas ocupantes)</td>
+                </tr>
+                <tr>
+                    <td><img src="6_azul.png" alt="">Privadas (101 a 250 ocupantes)</td>
+                </tr>
+                <tr>
+                    <td><img src="7_rojo.png" alt="">Públicas (251 o mas ocupantes)</td>
+                </tr>
+                <tr>
+                    <td><img src="6_rojo.png" alt="">Públicas (101 o 250 ocupantes)</td>
+                </tr>
+            </table>
+        </div>
+
+        <br><br><br>
+        
+        
+        
+        <h5  class="titulo">5.- Análisis de los elementos visuales usados: tipo de gráficos,
+            interacción, colores, textos…</h5>
+        <p>La visualización atendió a la sencillez. Mostrando solo en color de contraste la información de las
+            instituciones y lo demás en gris/blanco</p>
+        <p>El mapa permite el zoom y pan dinámicos</p>
+        <p>Puntos de mejora:</p>
+        <p>Crear tamaños dinámicos para la representación de las instituciones (circulos) considerando el tañano de la
+            institución</p>
+        <p>Crear ayudas visuales para mostrar instituciones públicas y/o privadas</p>
+        <p>Permitir un drill-downn para recuperar mas información basada en click sobre items</p>
+        <p>Finalmente un control para mostrar todo en un solo mapa dinámico como en:</p>
+        <p><a href="https://observablehq.com/@d3/walmarts-growth?intent=fork"
+                target="_blank">https://observablehq.com/@d3/walmarts-growth?intent=fork</a></p>
+                <br><br><br>
+        
+        
+        
+        
+        <h5  class="titulo">6.- Reflexiones finales sobre que explica y que aporta la visualización
+            creada y qué formas de captar la atención del usuario se han utilizado.</h5>
+        <p>Este análisis visual logra su cometido al generar curiosidad sobre los factores que influyeron en la creación
+            de instituciones educativas en México, así como su distribución geográfica y temporal. Sin embargo, para
+            obtener una comprensión más completa, sería beneficioso complementar estos datos con otras fuentes, como el
+            crecimiento poblacional, cambios políticos y económicos.</p>
+        <p>Para captar el interés del espectador se inició por un título provocador e intrigante y, se continuó por
+            mostrar solo aquello de interés. Se facultó al usuario a poder interactuar con la visualización para por sus
+            propios medios descubra la información y se concentre en aquello de su propio interés.</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <hr>
+            <div class="center" style="font-size: x-small;">Sito elaborado por: Cuauhtemoc Medina Uicab @2024</div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+    </div>
+
+
+
+
+
+    <script src="d3.js"></script>
+    <script src="http://d3js.org/topojson.v0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let slider = document.getElementById("rango");
+        let output = document.getElementById("anio");
+        output.innerHTML = slider.value;
+        
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+          fdo(this.value);
+        }
+    </script>
+    
+    <script type="text/javascript">
+        
+
+        function fdo(valor){
+            $("#svg_todas").empty();
+            mod_svg(svg_todas, valor);
+        }
+
+
+        let width = 960;
+        let height = 500;
+
+        let svg_todas = d3.select("#svg_todas")
+            .attr("width", width)
+            .attr("height", height);
+
+        let svg_2011 = d3.select("#svg_2011")
+            .attr("width", width)
+            .attr("height", height);
+
+        mod_svg(svg_todas, "2");
+        //mod_svg(svg_2011, "2011");
+
+        function mod_svg(svg, filtro) {
+            let x = d3.scaleLinear()
+                .domain([0, width])
+                .range([0, width]);
+
+            let y = d3.scaleLinear()
+                .domain([0, height])
+                .range([height, 0]);
+
+            let projection = d3.geoMercator()
+                .center([-117, 30.98])
+                .scale(width / 2.5 / Math.PI)
+                .rotate([0, 0])
+                .translate([width / 2, height / 2]);
+
+            //define un generador para el Path
+            let path = d3.geoPath()
+                .projection(projection);
+
+            let zooming = function (d) {
+                let offset = [d3.event.transform.x, d3.event.transform.y];
+                let newScale = d3.event.transform.k * 2000;
+                projection.translate(offset)
+                    .scale(newScale);
+                //Actualiza entidades
+                svg.selectAll("path")
+                    .attr("d", path);
+                svg.selectAll("circle")
+                    .attr("cx", function (d, i) {
+                        return projection([d.lon, d.lat])[0];
+                    })
+                    .attr("cy", function (d) {
+                        return projection([d.lon, d.lat])[1];
+                    });
+            }
+            let zoom = d3.zoom()
+                .on("zoom", zooming);
+            let center = projection([-89.60, 20.98]);
+
+            //Crea un contenedor para todos los elementos de zoom
+            let map = svg.append("g")
+                .attr("id", "map")
+                .call(zoom)  //Enlaza el comportamiento zoom
+                .call(zoom.transform, d3.zoomIdentity  //Establece la proyeccion inicial
+                    .translate(width / 2, height / 2)
+                    .scale(.6)
+                    .translate(-center[0], -center[1]));
+
+            map.append("rect")
+                .attr("x", 0)
+                .attr("y", 0)
+                .attr("width", width)
+                .attr("height", height)
+                .attr("fill", "#a7cdf2")
+                .attr("opacity", 0);
+
+            let g = svg.append("g");
+
+            let estados = d3.json("mx_tj.json", function (error, mx) {
+                map.selectAll("path")
+                    .data(topojson.object(mx, mx.objects.states).geometries)
+                    .enter()
+                    .append("path")
+                    .attr("d", path)
+                    .attr("fill", "rgb(216,216,216)")
+                    .style("stroke", "white");
+            });
+
+            let ce = d3.csv("todas2.csv", function (data) {
+                g.selectAll("circle")
+                    .data(data.filter(d => d.fecha.includes(filtro)))
+                    .enter()
+                    .append("circle")
+                    .attr("cx", function (d) {
+                        return projection([d.lon, d.lat])[0];
+                    })
+                    .attr("cy", function (d) {
+                        return projection([d.lon, d.lat])[1];
+                    })
+                    .attr("r", function (d) {
+                        if(d.personas == "6"){
+                            return 3;
+                        }else{
+                            return 9;
+                        };
+                    })
+                    .style("fill", function(d){
+                        if(d.privada == "0"){
+                            return "#FC5A4C"; //publico
+                        }else{
+                            return "#2E5785"; //privado
+                        }
+                    })
+                    .style("stroke", "white")
+                    .style("stroke-width", 1.5)
+                    .style("opacity", 0.5)
+                    .on("mouseover", function(d){               
+                        d3.select("#miitem").text("Tipo de institución: " + d.tipo);                       
+                    })
+                    .on("mouseout", function(d){               
+                        d3.select("#miitem").text("Tipo de institución:");
+                    })
+                    ;
+            });
+
+        }
+
+    </script>
